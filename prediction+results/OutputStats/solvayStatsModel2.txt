@@ -1,0 +1,181 @@
+Predicted number of people feeling each emotion:
+Angry: 11
+Fearful: 0
+Happy: 2
+Neutral: 12
+Sad: 3
+Surprised: 0
+
+Predicted number of men and women:
+Women: 3
+Men: 25
+
+Specific predictions for faces (see image for who's who):
+Person 1:
+Predicted emotion: Angry
+Confidence: 0.38781524
+Predicted gender: Man
+Confidence: 0.89965886
+
+Person 2:
+Predicted emotion: Angry
+Confidence: 0.59197474
+Predicted gender: Man
+Confidence: 0.583637
+
+Person 3:
+Predicted emotion: Angry
+Confidence: 0.53505373
+Predicted gender: Man
+Confidence: 0.98371613
+
+Person 4:
+Predicted emotion: Neutral
+Confidence: 0.47026512
+Predicted gender: Man
+Confidence: 0.93730545
+
+Person 5:
+Predicted emotion: Neutral
+Confidence: 0.5431332
+Predicted gender: Man
+Confidence: 0.9166301
+
+Person 6:
+Predicted emotion: Neutral
+Confidence: 0.62726665
+Predicted gender: Man
+Confidence: 0.9157927
+
+Person 7:
+Predicted emotion: Angry
+Confidence: 0.809524
+Predicted gender: Woman
+Confidence: 0.7069004
+
+Person 8:
+Predicted emotion: Sad
+Confidence: 0.36460364
+Predicted gender: Man
+Confidence: 0.9635548
+
+Person 9:
+Predicted emotion: Angry
+Confidence: 0.54171216
+Predicted gender: Man
+Confidence: 0.9247081
+
+Person 10:
+Predicted emotion: Neutral
+Confidence: 0.66110986
+Predicted gender: Man
+Confidence: 0.98968554
+
+Person 11:
+Predicted emotion: Angry
+Confidence: 0.5665451
+Predicted gender: Man
+Confidence: 0.858431
+
+Person 12:
+Predicted emotion: Neutral
+Confidence: 0.57359236
+Predicted gender: Man
+Confidence: 0.9391995
+
+Person 13:
+Predicted emotion: Neutral
+Confidence: 0.81499916
+Predicted gender: Man
+Confidence: 0.6382759
+
+Person 14:
+Predicted emotion: Sad
+Confidence: 0.43899855
+Predicted gender: Man
+Confidence: 0.9243938
+
+Person 15:
+Predicted emotion: Neutral
+Confidence: 0.8102385
+Predicted gender: Woman
+Confidence: 0.97021514
+
+Person 16:
+Predicted emotion: Angry
+Confidence: 0.41582084
+Predicted gender: Man
+Confidence: 0.9850332
+
+Person 17:
+Predicted emotion: Angry
+Confidence: 0.6579678
+Predicted gender: Man
+Confidence: 0.8227861
+
+Person 18:
+Predicted emotion: Angry
+Confidence: 0.4810425
+Predicted gender: Man
+Confidence: 0.9274997
+
+Person 19:
+Predicted emotion: Neutral
+Confidence: 0.39979565
+Predicted gender: Man
+Confidence: 0.99322414
+
+Person 20:
+Predicted emotion: Neutral
+Confidence: 0.8537583
+Predicted gender: Man
+Confidence: 0.8976347
+
+Person 21:
+Predicted emotion: Neutral
+Confidence: 0.5233646
+Predicted gender: Man
+Confidence: 0.9910091
+
+Person 22:
+Predicted emotion: Neutral
+Confidence: 0.39326963
+Predicted gender: Woman
+Confidence: 0.52345
+
+Person 23:
+Predicted emotion: Sad
+Confidence: 0.4656638
+Predicted gender: Man
+Confidence: 0.54669917
+
+Person 24:
+Predicted emotion: Happy
+Confidence: 0.8730227
+Predicted gender: Man
+Confidence: 0.89115417
+
+Person 25:
+Predicted emotion: Angry
+Confidence: 0.7477751
+Predicted gender: Man
+Confidence: 0.9539334
+
+Person 26:
+Predicted emotion: Neutral
+Confidence: 0.57193285
+Predicted gender: Man
+Confidence: 0.6660698
+
+Person 27:
+Predicted emotion: Angry
+Confidence: 0.73949254
+Predicted gender: Man
+Confidence: 0.99652475
+
+Person 28:
+Predicted emotion: Happy
+Confidence: 0.81667113
+Predicted gender: Man
+Confidence: 0.9777784
+
