@@ -46,7 +46,7 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 
 
-<img src="images/10388.jpg" width="100" height="100">
+<img src="images/10388.jpg" width="100" height="100">         <img src="images/10141.jpg" width="100" height="100">
 
 Femal
 
