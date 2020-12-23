@@ -46,7 +46,7 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 
 
-![alt text](images/3144.jpg)
+![alt text](images/3144.jpg)            ![alt text](images/10388.jpg)
 
 Femal
 
