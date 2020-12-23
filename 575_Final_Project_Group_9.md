@@ -43,12 +43,11 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 **Figure 4.0.1** and **Figure 4.0.2** show selections from the IMDB and FER-2013 datasets respectively. Both are publicly available and widely used for gender and expression recognition models. Images in the IMDB dataset are of all sizes, and had to be converted to grayscale 128x128 before being used for training. Images in the FER-2013 dataset are 64x64 grayscale, and require no preprocessing before. The IMDB dataset has an implicit bias built in (which will be discussed a bit more later), in that it primarily comprises white, western actors. This leads to a gender recognition model that will likely perform better on white subjects with western features.
 
+##### Gender Dataset: Female images preview
 
+<img src="images/10388.jpg" width="100" height="100"> <img src="images/10141.jpg" width="100" height="100"> <img src="images/3144.jpg" width="100" height="100"> <img src="images/3867.jpg" width="100" height="100">
 
-
-<img src="images/10388.jpg" width="100" height="100">         <img src="images/10141.jpg" width="100" height="100">
-
-Femal
+##### Gender Dataset: Male images preview
 
 Male
 
