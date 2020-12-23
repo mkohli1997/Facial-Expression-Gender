@@ -51,6 +51,7 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 
 
+
 **Figure 4.0.1** Images from the IMDB dataset
 
 Disgust
