@@ -1,164 +1,46 @@
-# Expression and Gender Recognition Software
+# EXPRESSION AND GENDER RECOGNITION SOFTWARE
 
 ## Mehul Kohli, Alexander Constant
-
-## April 18, 2019
-
 
 
 ### ABSTRACT
 
 This paper describes the creation and implementation of two Convolution Neural Network models for gender and expression recognition. The models were trained using the publicly available IMDB and FER-2013 datasets, for gender and facial expression respectively. We implemented Haar cascade facial detection in order to ensure that models did not attempt to predict on frames without faces. We report 95% validation rate for gender recognition in the IMDB dataset and 60.12% validation for expression recognition in the FER-2013 dataset. In addition, we found the FER-2013 expression dataset had a significant sample size imbalance, and we have trained three models for expression recognition: one with the imbalanced label included (“Disgust”), one with images labeled “Disgust” removed, and one with images labeled “Digust” removed and the remaining training data normalized to 4,000 images per class. Our implementation of these CNNs differs from others in the specific architecture of the neural network, and the removal of the imbalanced “Disgust” label and the  normalization of the remaining training data suggests an area for improvement for other models training with the FER-2013 dataset.
 
-**Introduction**
 
-Facial recognition is a fast growing segment of the software industry, and has applications ranging
+### INTRODUCTION
 
-from security to implementations in social media tagging to healthcare. Oftentimes, it is useful to
-
-ascertain certain information about a face, such as age, gender, facial expression, and ethnicity. In
-
-recent years, the rise of Convolutional Neural Networks (CNNs) for image classification has
-
-proved useful for categorizing images, and facial recognition implementations have been at the
-
-forefront. Companies like Affectiva [1] offer expression recognition services at cost, and have
-
-models trained on large, proprietary datasets.
-
-The publicly available IMDB gender and FER-2013 emotion datasets are among the most
-
-popularly used datasets for training gender and expression recognition CNNs for non-professional
-
-use. In-dataset validation accuracies for these datasets typically range up to 96% (gender, IMDB
-
-dataset) and ~70% (expression, FER-2013 dataset).
-
-**2**
-
-**Related Work**
-
-As facial and expression recognition is a fast growing field, there are a large number of approaches
-
-to developing CNNs for facial recognition purposes, and each approach is highly dependent of the
-
-desired end use of the trained model. For example, models used in real-time applications, such as
-
-robotics, tend to need to be smaller and more streamlined, such that there is not much delay
-
-between the reading of an input image and classification predictions. Models like those developed
-
-in [2] tend to value maximizing the ratio of accuracy over parameters by using Global Average
-
-Pooling operations. Another approach, taken in [6], is to first preprocess images by cropping the
-
-face and extracting Facial Parts – more specifically, the eyes and the mouth – then training two
-
-separate CNNs on the specifically extracted facial parts and combing their outputs in order to
-
-perform classification. This limits the total number of trainable parameters necessary.
-
-In other cases, it is desirable to be able to train to higher accuracies while using smaller datasets.
-
-Models like those studied in [3] use “Scale Invariant Feature Transforms” in combination with
-
-CNNs in order to maximize validation accuracies over smaller datasets.
-
-In all applications, it is desirable to reduce total training time and to simplify the specific
-
-implementations of the CNN in order to make working with such large statistical models less
-
-unwieldy. [5] proposes performing a batch normalization procedure between layers, which is used
-
-to normalize the inputs to each layer. This is necessary because as training proceeds, shifting
-
-network parameters create changing distributions of internal nodes in the network, which creates
-
-a need to precisely handle each layers inputs. Batch normalization removes this need, which
-
-accelerates training times. We use the batch normalization implementation that has been built into
-
-TensorFlow.
+Facial recognition is a fast growing segment of the software industry, and has applications ranging from security to implementations in social media tagging to healthcare. Oftentimes, it is useful to ascertain certain information about a face, such as age, gender, facial expression, and ethnicity. In recent years, the rise of Convolutional Neural Networks (CNNs) for image classification has proved useful for categorizing images, and facial recognition implementations have been at the forefront. Companies like Affectiva [1] offer expression recognition services at cost, and have models trained on large, proprietary datasets. The publicly available IMDB gender and FER-2013 emotion datasets are among the most popularly used datasets for training gender and expression recognition CNNs for non-professional use. In-dataset validation accuracies for these datasets typically range up to 96% (gender, IMDB dataset) and ~65% (expression, FER-2013 dataset).
 
 
+### RELATED WORK
+
+As facial and expression recognition is a fast growing field, there are a large number of approaches to developing CNNs for facial recognition purposes, and each approach is highly dependent of the desired end use of the trained model. For example, models used in real-time applications, such as robotics, tend to need to be smaller and more streamlined, such that there is not much delay between the reading of an input image and classification predictions. Models like those developed in [2] tend to value maximizing the ratio of accuracy over parameters by using Global Average Pooling operations. Another approach, taken in [6], is to first preprocess images by cropping the face and extracting Facial Parts – more specifically, the eyes and the mouth – then training two separate CNNs on the specifically extracted facial parts and combing their outputs in order to perform classification. This limits the total number of trainable parameters necessary. In other cases, it is desirable to be able to train to higher accuracies while using smaller datasets. Models like those studied in [3] use “Scale Invariant Feature Transforms” in combination with CNNs in order to maximize validation accuracies over smaller datasets.
+
+In all applications, it is desirable to reduce total training time and to simplify the specific implementations of the CNN in order to make working with such large statistical models less unwieldy. [5] proposes performing a batch normalization procedure between layers, which is used to normalize the inputs to each layer. This is necessary because as training proceeds, shifting network parameters create changing distributions of internal nodes in the network, which creates a need to precisely handle each layers inputs. Batch normalization removes this need, which accelerates training times. We use the batch normalization implementation that has been built into TensorFlow.
 
 
-
-4
-
-**3**
-
-**Experimental Platform**
+### EXPERIMENTAL PLATFORM
 
 Models were trained on a laptop with the following specs:
 
-·
+ - **GPU Specs**: Nvidia GeForce GTX 1050
+ - **Cuda Cores**: 640
+ - **Graphics Clock**: 1354 MHz
+ - **Total available graphics memory**: 8134 MB
+ - **Shared system memory**: 4038 MB
+ - **Laptop**: HP Pavilion Power cb052tx
+ - **RAM**: 8 GB
 
-GPU Specs:
 
-·
+### METHODOLOGY
 
-Nvidia GeForce GTX 1050
+##### 4.0 Ongoing Image Reclassification and Datasets
 
-·
+For both the IMDB and FER-2013 datasets, a number of images were observed to be misplaced, corrupted, or otherwise unusable. This is especially evident in the FER-2013 dataset. Throughout the project the reclassification of mislabeled images was an ongoing effort, although with tens of thousands of images in each dataset, it remained a concern even once the final models were obtained.
 
-Cuda Cores: 640
-
-·
-
-Graphics Clock: 1354 MHz
-
-·
-
-·
-
-Total available graphics memory: 8134 MB
-
-Shared system memory: 4038 MB
-
-·
-
-Laptop:
-
-·
-
-·
-
-HP Pavilion Power cb052tx
-
-RAM: 8 GB
-
-**4**
-
-**Methodology**
-
-**4.0 Ongoing Image Reclassification and Datasets**
-
-For both the IMDB and FER-2013 datasets, a number of images were observed to be misplaced,
-
-corrupted, or otherwise unusable. This is especially evident in the FER-2013 dataset. Throughout
-
-the project the reclassification of mislabeled images was an ongoing effort, although with tens of
-
-thousands of images in each dataset, it remained a concern even once the final models were
-
-obtained.
-
-**Figure 4.0.1** and **Figure 4.0.2** on the following page show selections from the IMDB and FER-
-
-2013 datasets respectively. Both are publicly available and widely used for gender and expression
-
-recognition models. Images in the IMDB dataset are of all sizes, and had to be converted to
-
-grayscale 128x128 before being used for training. Images in the FER-2013 dataset are 64x64
-
-grayscale, and require no preprocessing before.
-
-The IMDB dataset has an implicit bias built in (which will be discussed a bit more later), in that it
-
-primarily comprises white, western actors. This leads to a gender recognition model that will likely
-
-perform better on white subjects with western features.
+**Figure 4.0.1** and **Figure 4.0.2** show selections from the IMDB and FER-2013 datasets respectively. Both are publicly available and widely used for gender and expression 
+recognition models. Images in the IMDB dataset are of all sizes, and had to be converted to grayscale 128x128 before being used for training. Images in the FER-2013 dataset are 64x64 grayscale, and require no preprocessing before. The IMDB dataset has an implicit bias built in (which will be discussed a bit more later), in that it primarily comprises white, western actors. This leads to a gender recognition model that will likely perform better on white subjects with western features.
 
 
 
@@ -189,274 +71,54 @@ Surprise
 **Figure 4.0.2** Images from FER-2013 dataset
 
 
+##### 4.1 Gender Recognition Model
 
-
-
-6
-
-**4.1 Gender Recognition Model**
-
-The gender recognition model architecture is
-
-shown to the right in Figure 1.
-
-The architecture was designed iteratively, using
-
-TensorFlow [6]. We began with a small model of
-
-only a few layers, and layers were added and
-
-subtracted as the model was tested. Generally,
-
-convolutional layers (conv2D) attempt to
-
-recognize features of the input image by
-
-convoluting the image with various kernels. Max-
-
-pooling layers attempt to compress the image
-
-(conventionally by ½) while maintaining the
-
-features detected by the preceding convolutional
-
-layer. Dropout layers attempt to combat overfitting
-
-by ignoring randomly chosen nodes within the
-
-preceding layer. The idea is to prevent sets of
-
-interdependent weights from being included in the
-
-final model – essentially, Dropout “forces” nodes
-
-to
-
-interdependent patterns. The flatten layer simply
-
-turns pooled feature map, created by
-
-recognize
-
-individual
-
-patterns,
-
-not
-
-a
-
-convolutional and max-pooling layers, into a 1
-
-dimensional vector. Dense layers are where the
-
-“neurons” of the neural networks are.
-
-This model was then trained on the IMDB dataset
-
-using standard back-propagation over 30 epochs.
-
-A 75-25 training-testing data split was used. The
-
-final model weights returned after training were
-
-the weights of the network when minimum
-
-validation loss was reported – in this way, we were
-
-able to train the model over more epochs than
-
-necessary, which eliminated the need to train the
-
-model multiple times while guessing at the
-
-necessary number of epochs to minimize loss.
+The gender recognition model architecture is shown to the right in Figure 1. The architecture was designed iteratively, using TensorFlow [6]. We began with a small model of only a few layers, and layers were added and subtracted as the model was tested. Generally, convolutional layers (conv2D) attempt to recognize features of the input image by convoluting the image with various kernels. Max-pooling layers attempt to compress the image (conventionally by ½) while maintaining the features detected by the preceding convolutional layer. Dropout layers attempt to combat overfitting by ignoring randomly chosen nodes within the preceding layer. The idea is to prevent sets of interdependent weights from being included in the final model – essentially, Dropout “forces” nodes to interdependent patterns. The flatten layer simply turns pooled feature map, created by recognize individual patterns, not a convolutional and max-pooling layers, into a 1-dimensional vector. Dense layers are where the “neurons” of the neural networks are. This model was then trained on the IMDB dataset using standard back-propagation over 30 epochs. A 75-25% training-testing data split was used. The final model weights returned after training were the weights of the network when minimum validation loss was reported – in this way, we were able to train the model over more epochs than necessary, which eliminated the need to train the model multiple times  while guessing at the necessary number of epochs to minimize loss.
 
 **Figure 4.1:** Gender Recognition Architecture
 
 
 
 
-
-7
-
-**4.2 Expression Recognition Model with “Disgust”**
+##### 4.2 Expression Recognition Model with “Disgust”**
 
 **Label Included (Model 1)**
 
-The publicly available FER-2013 emotion dataset is one
-
-of the more commonly used emotion recognition
-
-datasets for training expression recognition models, and
-
-has seven classification categories: “Anger”, “Fear”,
-
-“Disgust”, “Happy”, “Neutral”, “Sad”, and “Surprise”.
-
-However, these categories contain highly variable
-
-numbers of images: from 567 in the “Disgust” category
-
-to 9299 in the “Happy” category. Machine learning in
-
-CNNs is highly dependent on having roughly equal
-
-sizes of classification categories – otherwise, a model
-
-may simply learn to not classify an image as belonging
-
-to a category because it was trained on far fewer images
-
-of that category, and in order to minimize loss it learned
-
-a bias against that category in general. The opposite case
-
-can be true of categories with larger numbers of images.
-
-Therefore, we once we had created an architecture that
-
-we were satisfied with, we trained three different
-
-models: one with all the images in the FER-2013
-
-dataset, one with the extremely underpopulated
-
-“Disgust” label removed, and one with the “Disgust”
-
-label removed and the numbers of all other training
-
-categories normalized to exactly 4000 images each.
-
-The architecture of the network is shown on the right. It
-
-includes a number of the features present in the gender
-
-recognition architecture, as well as the inclusion of a
-
-new feature, a Batch Normalization layer, as discussed
-
-in the **Related Work** section. This layer helps in
-
-reducing training time for the network, but also has
-
-marginal effects on decreasing validation loss in
-
-general.
-
-There is a single difference the architectures of used for
-
-the three models: the output layer for Model 1 (full
-
-dataset) had an output layer with 7 nodes (one
-
-corresponding to each label), while the architectures
-
-used for the datasets with “Disgust” removed had 6
-
-nodes in the output layer.
-
-For the first model (Model 1), this architecture was
-
-trained on the full FER-2013 dataset. As with the gender
-
-model, a 75-25 training/testing data split was used.
+The publicly available FER-2013 emotion dataset is one of the more commonly used emotion recognition datasets for training expression recognition models, and has seven classification categories: “Anger”, “Fear”, “Disgust”, “Happy”, “Neutral”, “Sad”, and “Surprise”. However, these categories contain highly variable numbers of images: from 567 in the “Disgust” category to 9299 in the “Happy” category. Machine learning in CNNs is highly dependent on having roughly equal sizes of classification categories – otherwise, a model may simply learn to not classify an image as belonging to a category because it was trained on far fewer images of that category, and in order to minimize loss it learned a bias against that category in general. The opposite case can be true of categories with larger numbers of images. Therefore, once we had created an architecture that we were satisfied with, we trained three different models: one with all the images in the FER-2013 dataset, one with the extremely underpopulated “Disgust” label removed, and one with the “Disgust” label removed and the numbers of all other training categories normalized to exactly 4000 images each. The architecture of the network is shown **on the right**. It includes a number of the features present in the gender recognition architecture, as well as the inclusion of a new feature, a Batch Normalization layer, as discussed in the **Related Work** section. This layer helps in reducing training time for the network, but also has marginal effects on decreasing validation loss in general. There is a single difference the architectures of used for the three models: the output layer for Model 1 (full dataset) had an output layer with 7 nodes (one corresponding to each label), while the architectures used for the datasets with “Disgust” removed had 6 nodes in the output layer. For the first model (Model 1), this architecture was trained on the full FER-2013 dataset. As with the gender model, a 75-25 training/testing data split was used.
 
 **Figure 4.2:** Expression Recognition Architecture
 
 
 
 
+Weights were returned when validation loss was roughly minimized (more on this later). Each of the following models were trained using back propagation over 100 epochs each.
 
-8
+##### 4.3 Expression Recognition Model without “Disgust” Label (Model 2)
 
-Weights were returned when validation loss was roughly minimized (more on this later). Each of
+Because the “Disgust” label was severely underpopulated, we decided to train the architecture in 4.2 on the FER-2013 dataset without the “Disgust” label, which, as will be seen later, was not particularly successfully learned by expression Model 1. As before, this model was trained over 100 epochs and weights were saved when minimum validation loss was recognized.
 
-the following models were trained using back propagation over 100 epochs each.
+##### 4.4 Expression Recognition Model without “Disgust” Label & with Normalized Datasets (Model 3)
 
-**4.3 Expression Recognition Model without “Disgust” Label (Model 2)**
+The final Expression Model was trained without images in the “Disgust” category and with all other category sizes normalized to 4000 images each. As before, it was trained over 100 epochs and weights were saved when minimum validation loss was achieved.
 
-Because the “Disgust” label was severely underpopulated, we decided to train the architecture in
+##### 4.5 Additional Tests
 
-4.2 on the FER-2013 dataset without the “Disgust” label, which, as will be seen later, was not
+In addition to the standard tests performed by the CNN as it is trained, an additional set of “eye tests” were performed on videos with known gender/expression data. The results of these tests were judged by the perceived accuracy with which the model was able to detect the intended gender/expression of the subject image. 
 
-particularly successfully learned by expression Model 1. As before, this model was trained over
 
-100 epochs and weights were saved when minimum validation loss was recognized.
+### RESULTS
 
-**4.4 Expression Recognition Model without “Disgust” Label & with Normalized Datasets**
+##### 5.1 Gender Recognition Model Results
 
-**(Model 3)**
-
-The final Expression Model was trained without images in the “Disgust” category and with all
-
-other category sizes normalized to 4000 images each. As before, it was trained over 100 epochs
-
-and weights were saved when minimum validation loss was achieved.
-
-**4.5 Additional Tests**
-
-In addition to the standard tests performed by the CNN as it is trained, an additional set of “eye
-
-tests” were performed on videos with known gender/expression data. The results of these tests
-
-were judged by the perceived accuracy with which the model was able to detect the intended
-
-gender/expression of the subject image.
-
-**5**
-
-**Results**
-
-**5.1 Gender Recognition Model Results**
-
-Our gender prediction model reported a
-
-validation accuracy of 95.01% on the
-
-IMDB gender dataset. TensorFlow
-
-callbacks were used to save the network’s
-
-weights when the validation testing loss
-
-was observed to be at a minimum, which
-
-occurred after 16 epochs of training. In
-
-epochs 19-30, training set validation loss
-
-continued to fall, but testing set validation
-
-loss rose slightly, indicating that the model
-
-was becoming overfit.
-
-Figures 5.1.1 (right) and 5.1.2 (following
-
-page) are graphical representations of the
-
-loss and accuracies achieved in the IMDB
-
-dataset for the gender model.
+Our gender prediction model reported a validation accuracy of 95.01% on the IMDB gender dataset. TensorFlow callbacks were used to save the network’s weights when the validation testing loss was observed to be at a minimum, which occurred after 16 epochs of training. In epochs 19-30, training set validation loss continued to fall, but testing set validation loss rose slightly, indicating that the model was becoming overfit. Figures 5.1.1 and 5.1.2 are graphical representations of the loss and accuracies achieved in the IMDB dataset for the gender model.
 
 **Figure 5.1.1** Gender Recognition Accuracy
 
 
 
+##### 5.2 Expression Model 1
 
-
-9
-
-**5.2 Expression Model 1**
-
-Our first expression recognition model (Model 1) achieved a validation accuracy in the FER-2013
-
-emotion dataset of 60.10%, which was achieved after 33 epochs of training. Figures 5.3.1 and 5.3.2
-
-below show the model’s loss and accuracy, respectively, for each epoch of training. The network
-
-weights present during minimum validation loss were saved.
+Our first expression recognition model (Model 1) achieved a validation accuracy in the FER-2013 emotion dataset of 60.10%, which was achieved after 33 epochs of training. Figures 5.3.1 and 5.3.2 below show the model’s loss and accuracy, respectively, for each epoch of training. The network weights present during minimum validation loss were saved.
 
 **Figure 5.3.1** Expression Model 1
 
@@ -469,42 +131,10 @@ Validation Loss
 
 
 
+In the case of a network trained on imbalanced data sets, such as the FER-2013 emotion dataset, it is worthwhile to examine the model’s confusion matrix over the dataset. The confusion matrix is an n x n matrix, where n is the number of classification categories in the network. Each row of the matrix represents a model’s predicted classification, and each column represents the labeled (known) classification. For each image in the dataset, the model predicts the image’s classification, and increments the number of images in the cell corresponding to the predicted classification (row) and the known classification (column). A perfect model’s confusion matrix would be diagonal, which would indicate that for all images the predicted classification matched the known classification. However, this could also represent overfitting of the model to the training data, if that same training data is used for the classification tests.
 
-10
+The confusion matrix is a useful tool for determining which classifications a multi-class model is particularly strong at, and which classifications it is weak at. Below are two confusion matrices (Figures 5.3.4 and 5.3.5) for Expression Model 1, one with image totals (to demonstrate the imbalanced size of the dataset classes) and one where each cell is a percentage representing the percentage of images in the column’s class (the known class) that the model predicted as belonging to the row’s predicted class. This percentage is calculated by dividing each cell’s number in the first confusion matrix by the sum of that cell’s column.
 
-In the case of a network trained on imbalanced data sets, such as the FER-2013 emotion dataset,
-
-it is worthwhile to examine the model’s confusion matrix over the dataset. The confusion matrix
-
-is an n x n matrix, where n is the number of classification categories in the network. Each row of
-
-the matrix represents a model’s predicted classification, and each column represents the labeled
-
-(known) classification. For each image in the dataset, the model predicts the image’s classification,
-
-and increments the number of images in the cell corresponding to the predicted classification (row)
-
-and the known classification (column). A perfect model’s confusion matrix would be diagonal,
-
-which would indicate that for all images the predicted classification matched the known
-
-classification. However, this could also represent overfitting of the model to the training data, if
-
-that same training data is used for the classification tests.
-
-The confusion matrix is a useful tool for determining which classifications a multi-class model is
-
-particularly strong at, and which classifications it is weak at. Below are two confusion matrices
-
-(Figures 5.3.4 and 5.3.5) for Expression Model 1, one with image totals (to demonstrate the
-
-imbalanced size of the dataset classes) and one where each cell is a percentage representing the
-
-percentage of images in the column’s class (the known class) that the model predicted as belonging
-
-to the row’s predicted class. This percentage is calculated by dividing each cell’s number in the
-
-first confusion matrix by the sum of that cell’s column.
 
 **Actual Classification**
 
@@ -790,109 +420,27 @@ Surprise
 
 
 
-11
+As can be seen in the above confusion matrices on the previous page, the model predicts “Happy”, “Neutral” and “Surprise” fairly well, with 80%+ of images labeled in those categories predicted as belonging to their respective category. The model particularly struggles with the “Disgust” and “Fear” labels: images with those labels were classified correctly less than 50% of the time. It appears that the model is particularly confused by images labeled as “Disgust”, “Fear”, and “Sad”. Almost 30% of images labeled “Disgust” were misclassified as “Anger” and 12% were misclassified as “Sad”. Roughly 22% of images labeled “Fear” were misclassified as “Sad” and 15% of images labeled “Sad” were misclassified as “Neutral”. The confusions between “Disgust”, “Fear” and “Sad” are perhaps not surprising, as the three expressions have quite a bit of overlap. The model’s biases may be seen by comparing the predicted classification totals to the known classification totals, as in the last column and last row of the confusion matrix in Figure 5.2.3.. For  example, the model predicted 303 images as belonging to the classification “Disgust”, but there were 567 images that belonged to this classification in the dataset. This indicates that the model is biased against predicting an image as belonging to the “Disgust” classification – this is probably due to the imbalance in the relative number of “Disgust” images in the FER-2013 dataset: there are 567 total “Disgust” images, and the next smallest number is the “Surprise” label with 4015. This means that the model likely learned a bias against classifying an image as “Disgust” because it was simply trained on far fewer “Disgust” labeled images. Model 3 attempts to correct this imbalance (see **Section 5.5**).
 
-As can be seen in the above confusion matrices on the previous page, the model predicts “Happy”,
-
-“Neutral” and “Surprise” fairly well, with 80%+ of images labeled in those categories predicted
-
-as belonging to their respective category. The model particularly struggles with the “Disgust” and
-
-“Fear” labels: images with those labels were classified correctly less than 50% of the time.
-
-It appears that the model is particularly confused by images labeled as “Disgust,” “Fear,” and
-
-“Sad”. Almost 30% of images labeled “Disgust” were misclassified as “Anger,” and 12% were
-
-misclassified as “Sad”. Roughly 22% of images labeled “Fear” were misclassified as “Sad,” and
-
-15% of images labeled “Sad” were misclassified as “Neutral”. The confusions between “Disgust,”
-
-“Fear,” and “Sad” are perhaps not surprising, as the three expressions have quite a bit of overlap.
-
-The model’s biases may be seen by comparing the predicted classification totals to the known
-
-classification totals, as in the last column and last row of the confusion matrix in Figure 5.2.3. For
-
-example, the model predicted 303 images as belonging to the classification “Disgust”, but there
-
-were 567 images that belonged to this classification in the dataset. This indicates that the model is
-
-biased against predicting an image as belonging to the “Disgust” classification – this is probably
-
-due to the imbalance in the relative number of “Disgust” images in the FER-2013 dataset: there
-
-are 567 total “Disgust” images, and the next smallest number is the “Surprise” label with 4015.
-
-This means that the model likely learned a bias against classifying an image as “Disgust” because
-
-it was simply trained on far fewer “Disgust” labeled images. Model 3 attempts to correct this
-
-imbalance (see **Section 5.5**).
-
-The model is biased towards classifying images as “Neutral,” in spite of the fact that the “Neutral”
-
-label has a similar number of images as other labels. Again surprisingly, the model does not appear
-
-biased towards “Happy” although that label has, by a large margin, more images than any other
-
-label. This is, perhaps, due to images labeled “Happy” having an easily noticeable feature that the
-
-network likely picked up on: a smile, especially one with teeth showing.
+The model is biased towards classifying images as “Neutral” in spite of the fact that the “Neutral” label has a similar number of images as other labels. Again surprisingly, the model does not appear biased towards “Happy” although that label has, by a large margin, more images than any other label. This is, perhaps, due to images labeled “Happy” having an easily noticeable feature that the network likely picked up on: a smile, especially one with teeth showing.
 
 **5.4 Expression Model 2**
 
-The second expression model
+The second expression model (Model 2) was trained without any images labeled “Disgust” due to reasons mentioned prior. It achieved a validation accuracy of 61.30% on the reduced dataset after 73 epochs. Figure 5.4.1 to the right shows a graph of the models accuracy over 100 epochs, and Figure 5.4.2 is a corresponding graph for validation loss.
 
-(Model 2) was trained without any
-
-images labeled “Disgust” due to
-
-reasons mentioned prior. It achieved
-
-a validation accuracy of 61.30% on
-
-the reduced dataset after 73 epochs.
-
-Figure 5.4.1 to the right shows a
-
-graph of the models accuracy over
-
-100 epochs, and Figure 5.4.2 on the
-
-following page is a corresponding
-
-graph for validation loss.
 
 **Figure 5.4.1** Expression Model 2
 
 Validation Accuracy
 
-
-
-
-
-12
-
 **Figure 5.4.2** Expression Model 2
 
 Validation Loss
 
-The slight increase in validation accuracy comes at the expense of the model no longer being able
 
-to detect “Disgust” at all, so simply reporting improved accuracy does not tell the whole story,
 
-especially because this accuracy is with respect to the reduced dataset, in which there are no more
+The slight increase in validation accuracy comes at the expense of the model no longer being able to detect “Disgust” at all, so simply reporting improved accuracy does not tell the whole story, especially because this accuracy is with respect to the reduced dataset, in which there are no more “Disgust” images at all. A different view of the model can be seen by creating confusion matrices for this model over the whole, unaltered dataset. In this way we can see whether removing the “Disgust” label tends to improve accuracy in detecting other facial expressions. Figures 5.4.3 and 5.4.4 below and on the following page are the two confusion matrices for Expression Model 2.
 
-“Disgust” images at all.
-
-A different view of the model can be seen by creating confusion matrices for this model *over the*
-
-*whole, unaltered dataset.* In this way we can see whether removing the “Disgust” label tends to
-
-improve accuracy in detecting other facial expressions. Figures 5.4.3 and 5.4.4 below and on the
-
-following page are the two confusion matrices for Expression Model 2.
 
 **Actual Classification**
 
@@ -1180,79 +728,15 @@ Surprise
 
 **Figure 5.4.4** Percentage Confusion Matrix for Expression Model 2
 
-The “Disgust” row of both matrices is empty, showing that the model no longer predicts the
+The “Disgust” row of both matrices is empty, showing that the model no longer predicts the “Disgust” expression. It is instructive to compare these two matrices to the matrices in Figures 5.3.4 and 5.3.5. It is noticeable that, aside from “Fear” and “Anger”, Expression Model 2 had reduced true positive percentages across the board. However, the reductions are minimal. What is also noticeable is that this model seems to have less of a bias towards predicting “Neutral” than Model 1 overall. In Model 1, “Neutral” was predicted 7420 times, compared to the actual number of “Neutral” images, 5915. Model 2 does not seem to have this bias – it predicted “Neutral” 5714 times. However, the model did demonstrate a rather noticeable bias towards predicting “Sad”: Model 2 predicted “Sad” 8468 times, compared to the actual number of “Sad” images, 6174. The predicted number of “Happy” images and “Anger” images matched up very well with total numbers of images for those respective categories. However, especially in the “Anger” category, this is largely due to a large number of false positives that just happen to add up nicely.
 
-“Disgust” expression. It is instructive to compare these two matrices to the matrices in Figures
+It is important to remember that this model is trained differently from the ground up, so this is not simply the result of “Disgust” predictions being moved elsewhere – instead, it is a completely different model than Expression Model 1. Here it is probably important to mention that, throughout this experiment, we are dealing with a dataset that has quite a number of mislabeled images. We’ve done our best as a group to fix these mislabels, but it is very difficult to go through ~35,000 images and ensure that all images are in their correct folders. That is why, although validation accuracies and confusion matrices tell important stories about the way a model *thinks* it performs on the dataset, the final effectiveness of the model is really determined by its performance in real-world tests, such as those that will be described in 5.6. For example, a face that is clearly “Sad” to most human observers may be found in the “Happy” dataset (and upon investigation this is not too uncommon an occurrence). A model may find this expression to be “Sad,” but because it is located in the “Happy” category, this will be reported as incorrect. Of course, the model is trained from the ground up on this dataset, so it is likely being misled as it trains over these images in the first place.
 
-5.3.4 and 5.3.5. It is noticeable that, aside from “Fear” and “Anger,” Expression Model 2 had
-
-reduced true positive percentages across the board. However, the reductions are minimal.
-
-What is also noticeable is that this model seems to have less of a bias towards predicting “Neutral”
-
-than Model 1 overall. In Model 1, “Neutral” was predicted 7420 times, compared to the actual
-
-number of “Neutral” images, 5915. Model 2 does not seem to have this bias – it predicted “Neutral”
-
-5714 times. However, the model did demonstrate a rather noticeable bias towards predicting
-
-“Sad”: Model 2 predicted “Sad” 8468 times, compared to the actual number of “Sad” images,
-
-\6174.
-
-The predicted number of “Happy” images and “Anger” images matched up very well with total
-
-numbers of images for those respective categories. However, especially in the “Anger” category,
-
-this is largely due to a large number of false positives that just happen to add up nicely.
-
-It is important to remember that this model is trained differently from the ground up, so this is not
-
-simply the result of “Disgust” predictions being moved elsewhere – instead, it is a completely
-
-different model than Expression Model 1.
-
-Here it is probably important to mention that, throughout this experiment, we are dealing with a
-
-dataset that has quite a number of mislabeled images. We’ve done our best as a group to fix these
-
-mislabels, but it is very difficult to go through ~35,000 images and ensure that all images are in
-
-their correct folders. That is why, although validation accuracies and confusion matrices tell
-
-important stories about the way a model *thinks* it performs on the dataset, the final effectiveness
-
-of the model is really determined by its performance in real-world tests, such as those that will be
-
-described in 5.6. For example, a face that is clearly “Sad” to most human observers may be found
-
-in the “Happy” dataset (and upon investigation this is not too uncommon an occurrence). A model
-
-may find this expression to be “Sad,” but because it is located in the “Happy” category, this will
-
-be reported as incorrect. Of course, the model is trained from the ground up on this dataset, so it
-
-is likely being misled as it trains over these images in the first place.
-
-
-
-
-
-14
 
 **5.5 Expression Model 3**
 
-For our final expression recognition model, we removed the “Disgust” labeled images and trained
+For our final expression recognition model, we removed the “Disgust” labeled images and trained over 4000 images each of the remaining classifications. This was an attempt to reduce the inherent bias learned by Model 1 towards classifying images as belonging to classifications that had larger numbers of training images. Figures 5.5.1 and 5.5.2 below are the graphs showing validation accuracy and validation loss for this model over 100 epochs of training. This model achieved a lower validation accuracy than the previous models: 57.2%, achieved at the 83rd epoch.
 
-over 4000 images each of the remaining classifications. This was an attempt to reduce the inherent
-
-bias learned by Model 1 towards classifying images as belonging to classifications that had larger
-
-numbers of training images. Figures 5.5.1 and 5.5.2 below are the graphs showing validation
-
-accuracy and validation loss for this model over 100 epochs of training. This model achieved a
-
-lower validation accuracy than the previous models: 57.2%, achieved at the 83rd epoch.
 
 **Figure 5.4.1** Expression Model 3
 
@@ -1262,11 +746,8 @@ Validation Accuracy
 
 Validation Loss
 
-Of course, for reasons mentioned earlier, it is not enough to simply take the model’s word for how
 
-well it performs, as the dataset itself is flawed. Figures 5.4.3 and 5.4.4 below and on the following
-
-page are the confusion matrices for Expression Model 3.
+Of course, for reasons mentioned earlier, it is not enough to simply take the model’s word for how well it performs, as the dataset itself is flawed. Figures 5.4.3 and 5.4.4 below and on the following page are the confusion matrices for Expression Model 3.
 
 **Actual Classification**
 
@@ -1554,33 +1035,13 @@ Surprise
 
 **Figure 5.5.3** Percentage Confusion Matrix for Expression Model 3
 
-Model 3 seems to introduce a significant drop in the consistency of “Happy” images being
 
-classified as “Happy,” when compared to the previous two models. Additionally, it appears to have
+Model 3 seems to introduce a significant drop in the consistency of “Happy” images being classified as “Happy,” when compared to the previous two models. Additionally, it appears to have a bias towards classifying images as “Angry.” However, it demonstrates a significant gain in classifying images labeld as “Surprise” correctly – in fact, this is the only model in which “Happy” wasn’t the most validated classification.
 
-a bias towards classifying images as “Angry.” However, it demonstrates a significant gain in
-
-classifying images labeld as “Surprise” correctly – in fact, this is the only model in which “Happy”
-
-wasn’t the most validated classification.
 
 **5.6 Additional Test Results**
 
-As mentioned before, all results for the Gender Model and the three Expression Models are
-
-reflecting their success within their datasets. For the Gender Model, this appears to be a non-issue:
-
-the IMDB dataset, although imperfect, appears to have much more consistency than the FER-2013
-
-dataset. Because of the inconsistency of the FER-2013 dataset, a model reporting that it is excellent
-
-within the dataset may be flawed in real-life classification. For this reason, we conducted a number
-
-of “eye-tests” to subjectively determine how the Expression Models perform.
-
-For these tests, Alex took a number of photos of himself making expressions, and passed those
-
-images to each of the expression models to classify.
+As mentioned before, all results for the Gender Model and the three Expression Models are reflecting their success within their datasets. For the Gender Model, this appears to be a non-issue: the IMDB dataset, although imperfect, appears to have much more consistency than the FER-2013 dataset. Because of the inconsistency of the FER-2013 dataset, a model reporting that it is excellent within the dataset may be flawed in real-life classification. For this reason, we conducted a number of “eye-tests” to subjectively determine how the Expression Models perform. For these tests, Alex took a number of photos of himself making expressions, and passed those images to each of the expression models to classify.
 
 These expressions are in figure 5.6.1 below:
 
@@ -1588,11 +1049,6 @@ These expressions are in figure 5.6.1 below:
 
 Happy, Neutral, Sad, and Surprised
 
-
-
-
-
-16
 
 The classifications determined by each model are shown in figure 5.6.2 below:
 
@@ -1646,25 +1102,9 @@ Fearful
 
 Neutral
 
-Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only
+Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
-Model with which we could achieve reasonably consistent results with “Fearful” expressions not
-
-in the FER-2013 dataset.
-
-Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from
-
-Model 1 over many attempts, including live video with frame-by-frame measurements. This is
-
-unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify
-
-any input image as “Disgust”.
-
-We were, however, able to get Model 1 to classify a number of the images in the “Disgust”
-
-classification of the FER-2013 datset as “Disgust”. Figure 5.6.3 below shows three of these images
-
-and their reclassifications in Models 2 and 3.
+We were, however, able to get Model 1 to classify a number of the images in the “Disgust” classification of the FER-2013 datset as “Disgust”. Figure 5.6.3 below shows three of these images and their reclassifications in Models 2 and 3.
 
 Image
 
