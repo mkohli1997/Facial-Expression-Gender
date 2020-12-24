@@ -45,15 +45,13 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 <img src="images/10388.jpg" width="100" height="100"> <img src="images/10141.jpg" width="100" height="100">
 <img src="images/3144.jpg" width="100" height="100"> <img src="images/3867.jpg" width="100" height="100">
-> **Female Images**
+> **Figure 4.0.1 (a) Gender Dataset - IMDB: Female Images Preview**
 
 <img src="images/297.jpg" width="100" height="100"> <img src="images/317.jpg" width="100" height="100">
 <img src="images/372.jpg" width="100" height="100"> <img src="images/6.jpg" width="100" height="100">
+> **Figure 4.0.1 (b) Gender Dataset - IMDB: Male Images Preview**
 
-
-
-
-**Figure 4.0.1** Images from the IMDB dataset
+                       **Figure 4.0.1** Images from the IMDB dataset
 
 Disgust
 
