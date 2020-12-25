@@ -212,8 +212,9 @@ These expressions are in figure 5.5.1 below:
 
 The classifications determined by each model are shown in figure 5.5.2 below:
 
+<img src="images/alex_eye_tests_results.PNG" width="789" height="156">
 
-
+**Figure 5.5.2** Eye Test Results
 
 Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
