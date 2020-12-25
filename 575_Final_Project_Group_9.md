@@ -207,54 +207,24 @@ These expressions are in figure 5.5.1 below:
 
 <img src="images/alex_eye_tests.PNG" width="884" height="209">
 
-**Figure 5.5.1** Eye test images, from left to right: Angry, Fearful, Happy, Neutral, Sad, and Surprised
+> **Figure 5.5.1** Eye test images, from left to right: Angry, Fearful, Happy, Neutral, Sad, and Surprised
 
 
 The classifications determined by each model are shown in figure 5.5.2 below:
 
 <img src="images/alex_eye_tests_results.PNG" width="789" height="156">
 
-**Figure 5.5.2** Eye Test Results
+
 
 Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
-We were, however, able to get Model 1 to classify a number of the images in the “Disgust” classification of the FER-2013 datset as “Disgust”. Figure 5.6.3 below shows three of these images and their reclassifications in Models 2 and 3.
+We were, however, able to get Model 1 to classify a number of the images in the “Disgust” classification of the FER-2013 datset as “Disgust”. Figure 5.5.2 below shows three of these images and their reclassifications in Models 2 and 3.
 
-Image
+<img src="images/disgust_results.PNG" width="773" height="156">
 
-Model 1 Model 2 Model 3
+> **Figure 5.5.2** "Disgust" Label Classification Results
 
-Image 1 Disgust
-
-Image 2 Disgust
-
-Image 3 Disgust
-
-Fear
-
-Sad
-
-Fear
-
-Fear
-
-Sad
-
-Fear
-
-Image 1
-
-Image 2
-
-Image 3
-
-**Figure 5.6.3**: “Disgust” images and reclassifications
-
-It seems as though Models 2 and 3 tend to reclassify “Disgust” images as either belonging to Fear
-
-or Sad. Compiling the “Disgust” columns of the percentage classification matrices from each
-
-expression model demonstrates how images labeled “Disgust” are reclassified by Models 2 and 3.
+It seems as though Models 2 and 3 tend to reclassify “Disgust” images as either belonging to Fear or Sad. Compiling the “Disgust” columns of the percentage classification matrices from each expression model demonstrates how images labeled “Disgust” are reclassified by Models 2 and 3.
 
 The compiled columns are in Figure 5.6.4 to the right.
 
