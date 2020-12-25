@@ -117,27 +117,20 @@ In addition to the standard tests performed by the CNN as it is trained, an addi
 
 ##### 5.1 Gender Recognition Model Results
 
-Our gender prediction model reported a validation accuracy of 95.01% on the IMDB gender dataset. TensorFlow callbacks were used to save the network’s weights when the validation testing loss was observed to be at a minimum, which occurred after 16 epochs of training. In epochs 19-30, training set validation loss continued to fall, but testing set validation loss rose slightly, indicating that the model was becoming overfit. Figures 5.1.1 and 5.1.2 are graphical representations of the loss and accuracies achieved in the IMDB dataset for the gender model.
+Our gender prediction model reported a validation accuracy of 95.04% on the IMDB gender dataset. TensorFlow callbacks were used to save the network’s weights when the validation testing loss was observed to be at a minimum, which occurred after 16 epochs of training. In epochs 19-30, training set validation loss continued to fall, but testing set validation loss rose slightly, indicating that the model was becoming overfit. Figure 5.1 is the graphical representation of the loss and accuracies achieved in the IMDB dataset for the gender model.
 
 <img src="images/Accuracy_gender.png" width="500" height="300"> <img src="images/Loss_gender.png" width="500" height="300">
 
-> **Figure 5.1.1 Gender Recognition Accuracy & Loss Stats**
-
+> **Figure 5.1 Gender Recognition Accuracy & Loss Stats**
 
 
 ##### 5.2 Expression Model 1
 
-Our first expression recognition model (Model 1) achieved a validation accuracy in the FER-2013 emotion dataset of 60.10%, which was achieved after 33 epochs of training. Figures 5.3.1 and 5.3.2 below show the model’s loss and accuracy, respectively, for each epoch of training. The network weights present during minimum validation loss were saved.
+Our first expression recognition model (Model 1) achieved a validation accuracy in the FER-2013 emotion dataset of 60.10%, which was achieved after 33 epochs of training. Figure 5.3 below shows the model’s loss and accuracy for each epoch of training. The network weights present during minimum validation loss were saved.
 
-**Figure 5.3.1** Expression Model 1
+<img src="images/Accuracy_emotion.png" width="500" height="300"> <img src="images/Loss_emotion.png" width="500" height="300">
 
-**Figure 5.3.2** Expression Model 1
-
-Validation Accuracy
-
-Validation Loss
-
-
+> **Figure 5.2 Expression Model 1 - Accuracy & Loss Stats**
 
 
 In the case of a network trained on imbalanced data sets, such as the FER-2013 emotion dataset, it is worthwhile to examine the model’s confusion matrix over the dataset. The confusion matrix is an n x n matrix, where n is the number of classification categories in the network. Each row of the matrix represents a model’s predicted classification, and each column represents the labeled (known) classification. For each image in the dataset, the model predicts the image’s classification, and increments the number of images in the cell corresponding to the predicted classification (row) and the known classification (column). A perfect model’s confusion matrix would be diagonal, which would indicate that for all images the predicted classification matched the known classification. However, this could also represent overfitting of the model to the training data, if that same training data is used for the classification tests.
