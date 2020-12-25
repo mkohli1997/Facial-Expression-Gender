@@ -95,7 +95,7 @@ The publicly available FER-2013 emotion dataset is one of the more commonly used
 
 There is a single difference the architectures of used for the three models: the output layer for Model 1 (full dataset) had an output layer with 7 nodes (one corresponding to each label), while the architectures used for the datasets with “Disgust” removed had 6 nodes in the output layer. For the first model (Model 1), this architecture was trained on the full FER-2013 dataset. As with the gender model, a 75-25 training/testing data split was used. Weights were returned when validation loss was roughly minimized (more on this below). Each of the following models were trained using back propagation over 100 epochs each.
 
-<img src="images/emotion_architecture_reduced.png" width="600" height="1000">
+<img src="images/emotion_architecture_reduced.png" width="300" height="1000">
 
 **Figure 4.2:** Expression Recognition Architecture
 
