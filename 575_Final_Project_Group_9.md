@@ -128,7 +128,7 @@ Our gender prediction model reported a validation accuracy of 95.04% on the IMDB
 
 Our first expression recognition model (Model 1) achieved a validation accuracy in the FER-2013 emotion dataset of 60.10%, which was achieved after 33 epochs of training. Figure 5.3 below shows the model’s loss and accuracy for each epoch of training. The network weights present during minimum validation loss were saved.
 
-<img src="images/Accuracy_emotion.png" width="500" height="300"> <img src="images/Loss_emotion.png" width="500" height="300">
+<img src="images/Accuracy&Loss_emotion.png" width="1000" height="600">
 
 > **Figure 5.2 Expression Model 1 - Accuracy & Loss Stats**
 
