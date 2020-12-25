@@ -142,7 +142,7 @@ The confusion matrix is a useful tool for determining which classifications a mu
 > **Figure 5.2.2 Expression Model 1 - Confusion Matrix (image totals)**
 
 
-<img src="images/confusion_matrix_model1_pct.PNG" width="950" height="250">
+<img src="images/confusion_matrix_model1_pct.PNG" width="950" height="300">
 
 > **Figure 5.2.3 Expression Model 1 - Confusion Matrix (percentages)**
 
