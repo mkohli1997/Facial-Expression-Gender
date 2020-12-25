@@ -91,7 +91,7 @@ The gender recognition model architecture is shown in Figure 4.1. The architectu
 
 ##### 4.2 Expression Recognition Model with “Disgust”
 
-The publicly available FER-2013 emotion dataset is one of the more commonly used emotion recognition datasets for training expression recognition models, and has seven classification categories: “Anger”, “Fear”, “Disgust”, “Happy”, “Neutral”, “Sad”, and “Surprise”. However, these categories contain highly variable numbers of images: from 567 in the “Disgust” category to 9299 in the “Happy” category. Machine learning in CNNs is highly dependent on having roughly equal sizes of classification categories – otherwise, a model may simply learn to not classify an image as belonging to a category because it was trained on far fewer images of that category, and in order to minimize loss it learned a bias against that category in general. The opposite case can be true of categories with larger numbers of images. Therefore, once we had created an architecture that we were satisfied with, we trained three different models: one with all the images in the FER-2013 dataset, one with the extremely underpopulated “Disgust” label removed, and one with the “Disgust” label removed and the numbers of all other training categories normalized to exactly 4000 images each. The architecture of the network is shown **on the right**. It includes a number of the features present in the gender recognition architecture, as well as the inclusion of a new feature, a Batch Normalization layer, as discussed in the **Related Work** section. This layer helps in reducing training time for the network, but also has marginal effects on decreasing validation loss in general.
+The publicly available FER-2013 emotion dataset is one of the more commonly used emotion recognition datasets for training expression recognition models, and has seven classification categories: “Anger”, “Fear”, “Disgust”, “Happy”, “Neutral”, “Sad”, and “Surprise”. However, these categories contain highly variable numbers of images: from 567 in the “Disgust” category to 9299 in the “Happy” category. Machine learning in CNNs is highly dependent on having roughly equal sizes of classification categories – otherwise, a model may simply learn to not classify an image as belonging to a category because it was trained on far fewer images of that category, and in order to minimize loss it learned a bias against that category in general. The opposite case can be true of categories with larger numbers of images. Therefore, once we had created an architecture that we were satisfied with, we trained three different models: one with all the images in the FER-2013 dataset, one with the extremely underpopulated “Disgust” label removed, and one with the “Disgust” label removed and the numbers of all other training categories normalized to exactly 4000 images each. The architecture of the network is shown below. It includes a number of layers present in the gender recognition architecture, as well as the inclusion of an additional Batch Normalization layer, as discussed in the **Related Work** section. This layer helps in reducing training time for the network, but also has marginal effects on decreasing validation loss in general.
 
 There is a single difference the architectures of used for the three models: the output layer for Model 1 (full dataset) had an output layer with 7 nodes (one corresponding to each label), while the architectures used for the datasets with “Disgust” removed had 6 nodes in the output layer. For the first model (Model 1), this architecture was trained on the full FER-2013 dataset. As with the gender model, a 75-25 training/testing data split was used. Weights were returned when validation loss was roughly minimized (more on this below). Each of the following models were trained using back propagation over 100 epochs each.
 
@@ -149,7 +149,7 @@ The confusion matrix is a useful tool for determining which classifications a mu
 
 As can be seen in the above confusion matrices, the model predicts “Happy”, “Neutral” and “Surprise” fairly well, with 80%+ of images labeled in those categories predicted as belonging to their respective category. The model particularly struggles with the “Disgust” and “Fear” labels: images with those labels were classified correctly less than 50% of the time. It appears that the model is particularly confused by images labeled as “Disgust”, “Fear”, and “Sad”. Almost 30% of images labeled “Disgust” were misclassified as “Anger” and 12% were misclassified as “Sad”. Roughly 22% of images labeled “Fear” were misclassified as “Sad” and 15% of images labeled “Sad” were misclassified as “Neutral”. The confusions between “Disgust”, “Fear” and “Sad” are perhaps not surprising, as the three expressions have quite a bit of overlap.
 
-The model’s biases may be seen by comparing the predicted classification totals to the known classification totals, as in the last column and last row of the confusion matrix in Figure 5.2.2. For  example, the model predicted 303 images as belonging to the classification “Disgust”, but there were 567 images that belonged to this classification in the dataset. This indicates that the model is biased against predicting an image as belonging to the “Disgust” classification – this is probably due to the imbalance in the relative number of “Disgust” images in the FER-2013 dataset: there are 567 total “Disgust” images, and the next smallest number is the “Surprise” label with 4015. This means that the model likely learned a bias against classifying an image as “Disgust” because it was simply trained on far fewer “Disgust” labeled images. Model 3 attempts to correct this imbalance (see **Section 5.5**).
+The model’s biases may be seen by comparing the predicted classification totals to the known classification totals, as in the last column and last row of the confusion matrix in Figure 5.2.2. For  example, the model predicted 303 images as belonging to the classification “Disgust”, but there were 567 images that belonged to this classification in the dataset. This indicates that the model is biased against predicting an image as belonging to the “Disgust” classification – this is probably due to the imbalance in the relative number of “Disgust” images in the FER-2013 dataset: there are 567 total “Disgust” images, and the next smallest number is the “Surprise” label with 4015. This means that the model likely learned a bias against classifying an image as “Disgust” because it was simply trained on far fewer “Disgust” labeled images. Model 3 attempts to correct this imbalance (see **Section 5.4**).
 
 The model is biased towards classifying images as “Neutral” in spite of the fact that the “Neutral” label has a similar number of images as other labels. Again surprisingly, the model does not appear biased towards “Happy” although that label has, by a large margin, more images than any other label. This is, perhaps, due to images labeled “Happy” having an easily noticeable feature that the network likely picked up on: a smile, especially one with teeth showing.
 
@@ -199,72 +199,21 @@ Of course, for reasons mentioned earlier, it is not enough to simply take the mo
 Model 3 seems to introduce a significant drop in the consistency of “Happy” images being classified as “Happy,” when compared to the previous two models. Additionally, it appears to have a bias towards classifying images as “Angry.” However, it demonstrates a significant gain in classifying images labeld as “Surprise” correctly – in fact, this is the only model in which “Happy” wasn’t the most validated classification.
 
 
-
-
-
-
-**5.6 Additional Test Results**
+**5.5 Additional Test Results**
 
 As mentioned before, all results for the Gender Model and the three Expression Models are reflecting their success within their datasets. For the Gender Model, this appears to be a non-issue: the IMDB dataset, although imperfect, appears to have much more consistency than the FER-2013 dataset. Because of the inconsistency of the FER-2013 dataset, a model reporting that it is excellent within the dataset may be flawed in real-life classification. For this reason, we conducted a number of “eye-tests” to subjectively determine how the Expression Models perform. For these tests, Alex took a number of photos of himself making expressions, and passed those images to each of the expression models to classify.
 
-These expressions are in figure 5.6.1 below:
+These expressions are in figure 5.5.1 below:
 
-**Figure 5.6.1** Eye test images, from left to right: Angry, Fearful,
+<img src="images/alex_eye_tests.PNG" width="884" height="209">
 
-Happy, Neutral, Sad, and Surprised
+**Figure 5.5.1** Eye test images, from left to right: Angry, Fearful, Happy, Neutral, Sad, and Surprised
 
 
-The classifications determined by each model are shown in figure 5.6.2 below:
+The classifications determined by each model are shown in figure 5.5.2 below:
 
-Expected Expression
 
-Angry
 
-Model 1 Neutral
-
-Model 2 Angry
-
-Model 3 Neutral
-
-Fearful
-
-Neutral
-
-Angry
-
-Happy
-
-Happy
-
-Happy
-
-Happy
-
-Neutral
-
-Neutral
-
-Neutral
-
-Neutral
-
-Sad
-
-Neutral
-
-Sad
-
-Surprised
-
-Surprised
-
-Surprised
-
-Surprised
-
-Fearful
-
-Neutral
 
 Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
