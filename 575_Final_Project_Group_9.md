@@ -137,7 +137,7 @@ In the case of a network trained on imbalanced data sets, such as the FER-2013 e
 
 The confusion matrix is a useful tool for determining which classifications a multi-class model is particularly strong at, and which classifications it is weak at. Below are two confusion matrices (Figures 5.2.2 and 5.2.3) for Expression Model 1, one with image totals (to demonstrate the imbalanced size of the dataset classes) and one where each cell is a percentage representing the percentage of images in the column’s class (the known class) that the model predicted as belonging to the row’s predicted class. This percentage is calculated by dividing each cell’s number in the first confusion matrix by the sum of that cell’s column.
 
-<img src="images/confusion_matrix_model1.PNG" width="1000" height="300">
+<img src="images/confusion_matrix_model1.PNG" width="1000" height="250">
 
 > **Figure 5.2.2 Expression Model 1 - Confusion Matrix (Image totals)**
 
