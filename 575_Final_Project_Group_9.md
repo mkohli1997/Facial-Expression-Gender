@@ -80,13 +80,7 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 
 
 
-Sad
 
-
-
-Happy
-
-Surprise
 
 **Figure 4.0.2** Images from FER-2013 dataset
 
