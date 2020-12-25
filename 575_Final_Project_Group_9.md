@@ -52,7 +52,7 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 > **Figure 4.0.1 (b) Gender Dataset - IMDB: Male Images Preview**
 
 
-<img src="images/save_3.png" width="48" height="48"><img src="images/save_28.png" width="48" height="48"><img src="images/save_103.png" width="48" height="48"><img src="images/save_41.png" width="48" height="48"><img src="images/save_42.png" width="48" height="48"><img src="images/save_43.png" width="48" height="48">
+<img src="images/save_3.png" width="48" height="48"> <img src="images/save_28.png" width="48" height="48"> <img src="images/save_103.png" width="48" height="48"> <img src="images/save_41.png" width="48" height="48"> <img src="images/save_42.png" width="48" height="48"> <img src="images/save_43.png" width="48" height="48">
 > **Figure 4.0.2 (a) Emotion Dataset - FER2013: Anger Images Preview**
 
 <img src="images/save_3.png" width="48" height="48">       <img src="images/save_28.png" width="48" height="48">       <img src="images/save_103.png" width="48" height="48">
