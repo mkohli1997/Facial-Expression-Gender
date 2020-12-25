@@ -119,7 +119,9 @@ In addition to the standard tests performed by the CNN as it is trained, an addi
 
 Our gender prediction model reported a validation accuracy of 95.01% on the IMDB gender dataset. TensorFlow callbacks were used to save the network’s weights when the validation testing loss was observed to be at a minimum, which occurred after 16 epochs of training. In epochs 19-30, training set validation loss continued to fall, but testing set validation loss rose slightly, indicating that the model was becoming overfit. Figures 5.1.1 and 5.1.2 are graphical representations of the loss and accuracies achieved in the IMDB dataset for the gender model.
 
-**Figure 5.1.1** Gender Recognition Accuracy
+<img src="images/Accuracy_gender.png" width="640" height="480">
+
+> **Figure 5.1.1 Gender Recognition Accuracy**
 
 
 
