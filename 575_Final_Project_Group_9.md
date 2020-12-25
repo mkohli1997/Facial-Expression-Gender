@@ -70,7 +70,8 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 <img src="images/save_96.png" width="48" height="48"> <img src="images/save_97.png" width="48" height="48"> <img src="images/save_98.png" width="48" height="48">
 > **Figure 4.0.2 (a) Emotion Dataset - FER2013: Sad Images Preview**
 
-<img src="images/save_3.png" width="48" height="48">       <img src="images/save_28.png" width="48" height="48">       <img src="images/save_103.png" width="48" height="48">
+<img src="images/save_141.png" width="48" height="48"> <img src="images/save_142.png" width="48" height="48"> <img src="images/save_143.png" width="48" height="48"> 
+<img src="images/save_144.png" width="48" height="48"> <img src="images/save_145.png" width="48" height="48"> <img src="images/save_146.png" width="48" height="48">
 > **Figure 4.0.2 (a) Emotion Dataset - FER2013: Happy Images Preview**
 
 <img src="images/save_3.png" width="48" height="48">       <img src="images/save_28.png" width="48" height="48">       <img src="images/save_103.png" width="48" height="48">
