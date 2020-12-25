@@ -56,36 +56,27 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 > **Figure 4.0.2 (a) Emotion Dataset - FER2013: Anger Images Preview**
 
 <img src="images/save_53.png" width="48" height="48"> <img src="images/save_54.png" width="48" height="48"> <img src="images/save_55.png" width="48" height="48"> <img src="images/save_56.png" width="48" height="48"> <img src="images/save_57.png" width="48" height="48"> <img src="images/save_58.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Disgust Images Preview**
+> **Figure 4.0.2 (b) Emotion Dataset - FER2013: Disgust Images Preview**
 
 <img src="images/save_63.png" width="48" height="48"> <img src="images/save_64.png" width="48" height="48"> <img src="images/save_66.png" width="48" height="48"> 
 <img src="images/save_67.png" width="48" height="48"> <img src="images/save_68.png" width="48" height="48"> <img src="images/save_69.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Neutral Images Preview**
+> **Figure 4.0.2 (c) Emotion Dataset - FER2013: Neutral Images Preview**
 
 <img src="images/save_81.png" width="48" height="48"> <img src="images/save_82.png" width="48" height="48"> <img src="images/save_83.png" width="48" height="48"> 
 <img src="images/save_84.png" width="48" height="48"> <img src="images/save_85.png" width="48" height="48"> <img src="images/save_86.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Fear Images Preview**
+> **Figure 4.0.2 (d) Emotion Dataset - FER2013: Fear Images Preview**
 
 <img src="images/save_93.png" width="48" height="48"> <img src="images/save_94.png" width="48" height="48"> <img src="images/save_95.png" width="48" height="48"> 
 <img src="images/save_96.png" width="48" height="48"> <img src="images/save_97.png" width="48" height="48"> <img src="images/save_98.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Sad Images Preview**
+> **Figure 4.0.2 (e) Emotion Dataset - FER2013: Sad Images Preview**
 
 <img src="images/save_141.png" width="48" height="48"> <img src="images/save_142.png" width="48" height="48"> <img src="images/save_143.png" width="48" height="48"> 
 <img src="images/save_144.png" width="48" height="48"> <img src="images/save_145.png" width="48" height="48"> <img src="images/save_146.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Happy Images Preview**
+> **Figure 4.0.2 (f) Emotion Dataset - FER2013: Happy Images Preview**
 
-<img src="images/save_3.png" width="48" height="48">       <img src="images/save_28.png" width="48" height="48">       <img src="images/save_103.png" width="48" height="48">
-> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Surprise Images Preview**
-
-
-
-
-
-
-
-
-
-**Figure 4.0.2** Images from FER-2013 dataset
+<img src="images/save_101.png" width="48" height="48"> <img src="images/save_102.png" width="48" height="48"> <img src="images/save_103.png" width="48" height="48"> 
+<img src="images/save_104.png" width="48" height="48"> <img src="images/save_105.png" width="48" height="48"> <img src="images/save_106.png" width="48" height="48">
+> **Figure 4.0.2 (g) Emotion Dataset - FER2013: Surprise Images Preview*
 
 
 ##### 4.1 Gender Recognition Model
