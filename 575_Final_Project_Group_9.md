@@ -139,9 +139,12 @@ The confusion matrix is a useful tool for determining which classifications a mu
 
 <img src="images/confusion_matrix_model1.PNG" width="1000" height="250">
 
-> **Figure 5.2.2 Expression Model 1 - Confusion Matrix (Image totals)**
+> **Figure 5.2.2 Expression Model 1 - Confusion Matrix (image totals)**
 
 
+<img src="images/confusion_matrix_model1_pct.PNG" width="1000" height="250">
+
+> **Figure 5.2.3 Expression Model 1 - Confusion Matrix (percentages)**
 
 
 As can be seen in the above confusion matrices, the model predicts “Happy”, “Neutral” and “Surprise” fairly well, with 80%+ of images labeled in those categories predicted as belonging to their respective category. The model particularly struggles with the “Disgust” and “Fear” labels: images with those labels were classified correctly less than 50% of the time. It appears that the model is particularly confused by images labeled as “Disgust”, “Fear”, and “Sad”. Almost 30% of images labeled “Disgust” were misclassified as “Anger” and 12% were misclassified as “Sad”. Roughly 22% of images labeled “Fear” were misclassified as “Sad” and 15% of images labeled “Sad” were misclassified as “Neutral”. The confusions between “Disgust”, “Fear” and “Sad” are perhaps not surprising, as the three expressions have quite a bit of overlap. The model’s biases may be seen by comparing the predicted classification totals to the known classification totals, as in the last column and last row of the confusion matrix in Figure 5.2.3.. For  example, the model predicted 303 images as belonging to the classification “Disgust”, but there were 567 images that belonged to this classification in the dataset. This indicates that the model is biased against predicting an image as belonging to the “Disgust” classification – this is probably due to the imbalance in the relative number of “Disgust” images in the FER-2013 dataset: there are 567 total “Disgust” images, and the next smallest number is the “Surprise” label with 4015. This means that the model likely learned a bias against classifying an image as “Disgust” because it was simply trained on far fewer “Disgust” labeled images. Model 3 attempts to correct this imbalance (see **Section 5.5**).
