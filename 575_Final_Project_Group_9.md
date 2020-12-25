@@ -51,7 +51,13 @@ For both the IMDB and FER-2013 datasets, a number of images were observed to be 
 <img src="images/372.jpg" width="100" height="100"> <img src="images/6.jpg" width="100" height="100">
 > **Figure 4.0.1 (b) Gender Dataset - IMDB: Male Images Preview**
 
-                       **Figure 4.0.1** Images from the IMDB dataset
+
+<img src="images/save_3.png" width="48" height="48">
+<img src="images/save_28.png" width="48" height="48">
+<img src="images/save_103.png" width="48" height="48">
+> **Figure 4.0.2 (a) Emotion Dataset - FER2013: Anger Images Preview
+
+
 
 Disgust
 
@@ -61,7 +67,7 @@ Fear
 
 Sad
 
-Anger
+
 
 Happy
 
