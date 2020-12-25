@@ -155,9 +155,9 @@ The model is biased towards classifying images as “Neutral” in spite of the 
 
 **5.3 Expression Model 2**
 
-The second expression model (Model 2) was trained without any images labeled “Disgust” due to reasons mentioned prior. It achieved a validation accuracy of 61.30% on the reduced dataset after 73 epochs. Figure 5.4.1 to the right shows a graph of the models accuracy over 100 epochs, and Figure 5.4.2 is a corresponding graph for validation loss.
+The second expression model (Model 2) was trained without any images labeled “Disgust” due to reasons mentioned prior. It achieved a validation accuracy of 61.30% on the reduced dataset after 73 epochs. Figure 5.3.1 shows a graph of the models accuracy over 100 epochs and a corresponding graph for validation loss.
 
-<img src="images/Acc_emo_disgust_excluded_biased_data.png" width="500" height="300"> <img src="images/Loss_emo_disgust_excluded_biased_data.png" width="500" height="300">
+<img src="images/Acc_emo_disgust_excluded_biased_data.png" width="475" height="300"> <img src="images/Loss_emo_disgust_excluded_biased_data.png" width="475" height="300">
 
 > **Figure 5.3.1 Expression Model 2 - Accuracy & Loss Stats**
 
