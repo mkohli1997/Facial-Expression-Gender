@@ -237,9 +237,6 @@ It seems as though Models 2 and 3 tend to reclassify “Disgust” images as eit
 It seems to be the case that the majority of “Disgust” labeled images are reclassified into “Fear” and “Sad”, with a lower percentage being reclassified into “Angry”. This seems reasonable – expressions of “Disgust” share a fair amount of overlap with expressions of fear, anger, and sadness.
 
 
-Additional classwise confusion vectors for each of the 7 expressions in the FER-2013 datset are available in Appendix II. Finally, additional tests on the Solvay Conference image appear in Appendix I, as the images each require their own page.
-
-
 ##### 5.6 Total Classification Percentages
 
 Another way to look at the performance of the model is to determine the percentage of each class of image in the dataset as a whole, and then compare the total percentage of images fitting each classification as predicted by the model. A model that predicts a a classification percentage that matches the class’ percentage of the dataset as labeled does not mean that that model performs better than another model. For example, our dataset may have 25% “Fear” images, and a model may predict 25% of the dataset as falling under the label “Fear” – but if that model only predicts 10% of images labeled “Fear” as belonging to the “Fear” class, and 90% of “Neutral” labeled images as belonging to the “Fear” class, then the model is obviously flawed. So, in order to determine the performance of a model, a total percentage classification matrix needs to be compared with each model’s confusion matrices, in order to determine whether a model actually predicts well within its class, as well as as a whole. A matrix for total classification percentages is is below, in Figure 5.6.1.
