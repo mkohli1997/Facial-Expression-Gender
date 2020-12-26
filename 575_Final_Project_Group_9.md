@@ -281,9 +281,9 @@ The final software could be improved to compile stats for videos with multiple p
 
 [2] Arriaga, Plöger, and Valdenegro. (20 Oct 2017). Real-time Convolutional Neural Networks for Emotion and Gender Classification. Retrieved March 13, 2019 from https://arxiv.org/pdf/1710.07557.pdf.
 
-[3] Connie T., Al-Shabi M., Cheah W.P., Goh M. (2017) Facial Expression Recognition Using a Hybrid CNN–SIFT Aggregator. (19 Oct 2017). Retrieved March 13, 2019 from (https://arxiv.org/ftp/arxiv/papers/1608/1608.02833.pdf)[ ](https://arxiv.org/ftp/arxiv/papers/1608/1608.02833.pdf)<https://arxiv.org/ftp/arxiv/papers/1608/1608.02833.pdf>[.](https://arxiv.org/ftp/arxiv/papers/1608/1608.02833.pdf)
+[3] Connie T., Al-Shabi M., Cheah W.P., Goh M. (2017) Facial Expression Recognition Using a Hybrid CNN–SIFT Aggregator. (19 Oct 2017). Retrieved March 13, 2019 from (https://arxiv.org/ftp/arxiv/papers/1608/1608.02833.pdf)
 
-[4]Sergey Ioffe and Christian Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. (11 Feb 2015). Retrieved March 20, 2019 from (https://arxiv.org/abs/1502.03167)[ ](https://arxiv.org/abs/1502.03167)<https://arxiv.org/abs/1502.03167>[.](https://arxiv.org/abs/1502.03167)
+[4]Sergey Ioffe and Christian Szegedy. Batch normalization: Accelerating deep network training by reducing internal covariate shift. (11 Feb 2015). Retrieved March 20, 2019 from (https://arxiv.org/abs/1502.03167)
 
 [5]Nwosu et al. Deep Convolutional Neural Network for Facial Expression Recognition using Facial Parts. (2017) Retrieved March 25, 2019 from <https://sceweb.uhcl.edu/xiaokun/doc/Publication/2018/ICPI2018_Lucy.pdf>
 
@@ -294,4 +294,4 @@ The final software could be improved to compile stats for videos with multiple p
 
 ### FOR FURTHER TEST RESULTS - APPENDIX I & APPENDIX II
 
-Feel free to have a look at our Appendix I and II attached with this repository for some additional interesting test results.
+Feel free to have a look at the Appendix attached with this repository for some additional interesting test results.
