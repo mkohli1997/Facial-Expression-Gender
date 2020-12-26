@@ -222,7 +222,7 @@ The classifications determined by each model are shown in figure 5.5.2 below:
 
 Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
-We were, however, able to get Model 1 to classify a number of the images in the “Disgust” classification of the FER-2013 datset as “Disgust”. Figure 5.5.2 below shows three of these images and their reclassifications in Models 2 and 3.
+We were, however, able to get Model 1 to classify a number of the images in the “Disgust” classification of the FER-2013 datset as “Disgust”. Figure 5.5.3 below shows three of these images and their reclassifications in Models 2 and 3.
 
 <img src="images/disgust_results.PNG" width="773" height="156">
 
