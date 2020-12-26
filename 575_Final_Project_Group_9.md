@@ -2,7 +2,7 @@
 
 ## Mehul Kohli, Alexander Constant
 
-<img src="images/project_image.png" width="640" height="480">
+<img src="images/project_image.png" width="700" height="450">
 
 > **Authors: Alex (left) and Mehul (right) 
 
