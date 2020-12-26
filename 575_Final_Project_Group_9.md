@@ -2,9 +2,9 @@
 
 ## Mehul Kohli, Alexander Constant
 
-<img src="images/project_image.png" width="700" height="450">
+<img src="images/project_image.png" width="600" height="350">
 
-> **Authors: Alex (left) and Mehul (right) 
+> **Authors: Alex (left) and Mehul (right)** 
 
 ### I. INSTRUCTIONS FOR EXECUTING THE CODE FILES
 
