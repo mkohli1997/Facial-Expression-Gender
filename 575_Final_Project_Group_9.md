@@ -257,7 +257,7 @@ Software was created that allowed for ease of testing models on live and prereco
 Additionally, the software tracks statistics for images, compiling how many men and women were detected, as well as the total number of people with each type of facial expression and more specific stats, including confidences, for each face detected. The user may choose to save these stats as a text file.
 
 
-##### 6. DISCUSSION
+### 6. DISCUSSION
 
 Our objectives in creating these models were to meet certain self-set standards for validation accuracy within each database. Our stated goal of achieving a 95% validation accuracy within the IMDB dataset for Gender Recognition was met, albeit barely. One concern is that the gender model only attests to the existence of two genders: “Man” and “Woman”.  Therefore, the model is unable to predict non-binary or other-gendered individuals – in order to rectify this oversight, a dataset with more gender label types should be created or found. We were unable to meet our stated goal of 65% validation accuracy in the FER-2013 dataset for expression recognition. Initially, this number was chosen as it roughly mirrored the numbers achieved in [2] (66%) and [3] (73.4%), with room to account for the extra features those networks utilized. However, expression recognition is an inherently subjective field: two people may interpret the same facial expression very differently, as can be seen by the perceived inconsistencies in the FER-2013 emotion dataset. This was the reason we created three different Expression Recognition Models. Although a model may report lower accuracy scores within the FER-2013 dataset, it is always possible that the model will perform better in real applications. 
 
@@ -292,6 +292,6 @@ The final software could be improved to compile stats for videos with multiple p
 [7] TensorFlow. TensorFlow. Retrieved March 13, 2019, from https://tensorflow.org
 
 
-### FOR FURTHER TEST RESULTS - Appendix I and Appendix II
+### FOR FURTHER TEST RESULTS - APPENDIX I & APPENDIX II
 
 Feel free to have a look at our Appendix I and II attached with this repository for some additional interesting test results.
