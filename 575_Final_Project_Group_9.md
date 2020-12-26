@@ -2,6 +2,10 @@
 
 ## Mehul Kohli, Alexander Constant
 
+<img src="images/project_image.png" width="640" height="480">
+
+> **Authors: Alex (left) and Mehul (right) 
+
 ### I. INSTRUCTIONS FOR EXECUTING THE CODE FILES
 
 ### II. ABSTRACT
@@ -113,7 +117,7 @@ The final Expression Model was trained without images in the “Disgust” categ
 In addition to the standard tests performed by the CNN as it is trained, an additional set of “eye tests” were performed on videos with known gender/expression data. The results of these tests were judged by the perceived accuracy with which the model was able to detect the intended gender/expression of the subject image. 
 
 
-### RESULTS
+### 5. RESULTS
 
 ##### 5.1 Gender Recognition Model Results
 
@@ -199,7 +203,7 @@ Of course, for reasons mentioned earlier, it is not enough to simply take the mo
 Model 3 seems to introduce a significant drop in the consistency of “Happy” images being classified as “Happy,” when compared to the previous two models. Additionally, it appears to have a bias towards classifying images as “Angry.” However, it demonstrates a significant gain in classifying images labeld as “Surprise” correctly – in fact, this is the only model in which “Happy” wasn’t the most validated classification.
 
 
-**5.5 Additional Test Results**
+##### 5.5 Additional Test Results
 
 As mentioned before, all results for the Gender Model and the three Expression Models are reflecting their success within their datasets. For the Gender Model, this appears to be a non-issue: the IMDB dataset, although imperfect, appears to have much more consistency than the FER-2013 dataset. Because of the inconsistency of the FER-2013 dataset, a model reporting that it is excellent within the dataset may be flawed in real-life classification. For this reason, we conducted a number of “eye-tests” to subjectively determine how the Expression Models perform. For these tests, Alex took a number of photos of himself making expressions, and passed those images to each of the expression models to classify.
 
@@ -214,7 +218,7 @@ The classifications determined by each model are shown in figure 5.5.2 below:
 
 <img src="images/alex_eye_tests_results.PNG" width="789" height="156">
 
-
+> **Figure 5.5.2** Eye test results
 
 Model 2 seemed to trend towards classifying things as “Angry” and “Sad”. Model 3 was the only Model with which we could achieve reasonably consistent results with “Fearful” expressions not in the FER-2013 dataset. Disgust was not included in this test, as we were unable to achieve a “Disgust” categorization from Model 1 over many attempts, including live video with frame-by-frame measurements. This is unsurprising, as Model 1’s confusion matrix showed a clear reluctance of the model to classify any input image as “Disgust”.
 
@@ -222,235 +226,47 @@ We were, however, able to get Model 1 to classify a number of the images in the 
 
 <img src="images/disgust_results.PNG" width="773" height="156">
 
-> **Figure 5.5.2** "Disgust" Label Classification Results
+> **Figure 5.5.3** "Disgust" images and reclassifications
 
-It seems as though Models 2 and 3 tend to reclassify “Disgust” images as either belonging to Fear or Sad. Compiling the “Disgust” columns of the percentage classification matrices from each expression model demonstrates how images labeled “Disgust” are reclassified by Models 2 and 3.
+It seems as though Models 2 and 3 tend to reclassify “Disgust” images as either belonging to Fear or Sad. Compiling the “Disgust” columns of the percentage classification matrices from each expression model demonstrates how images labeled “Disgust” are reclassified by Models 2 and 3. The compiled columns are in Figure 5.5.3.
 
-The compiled columns are in Figure 5.6.4 to the right.
+<img src="images/disgust_reclassifications.PNG" width="456" height="304">
 
-**Classification of Disgust Images**
+> **Figure 5.5.4** Classwise "Disgust" Classifications
 
-(% of Images Labeled)
+It seems to be the case that the majority of “Disgust” labeled images are reclassified into “Fear” and “Sad”, with a lower percentage being reclassified into “Angry”. This seems reasonable – expressions of “Disgust” share a fair amount of overlap with expressions of fear, anger, and sadness.
 
-Model 1 Model 2 Model 3
 
-It seems to be the case that the majority of “Disgust”
+Additional classwise confusion vectors for each of the 7 expressions in the FER-2013 datset are available in Appendix II. Finally, additional tests on the Solvay Conference image appear in Appendix I, as the images each require their own page.
 
-labeled images are reclassified into “Fear” and “Sad”,
 
-with a lower percentage being reclassified into
+##### 5.6 Total Classification Percentages
 
-“Angry”. This seems reasonable – expressions of
+Another way to look at the performance of the model is to determine the percentage of each class of image in the dataset as a whole, and then compare the total percentage of images fitting each classification as predicted by the model. A model that predicts a a classification percentage that matches the class’ percentage of the dataset as labeled does not mean that that model performs better than another model. For example, our dataset may have 25% “Fear” images, and a model may predict 25% of the dataset as falling under the label “Fear” – but if that model only predicts 10% of images labeled “Fear” as belonging to the “Fear” class, and 90% of “Neutral” labeled images as belonging to the “Fear” class, then the model is obviously flawed. So, in order to determine the performance of a model, a total percentage classification matrix needs to be compared with each model’s confusion matrices, in order to determine whether a model actually predicts well within its class, as well as as a whole. A matrix for total classification percentages is is below, in Figure 5.6.1.
 
-“Disgust” share a fair amount of overlap with
+<img src="images/total_classification_pct.PNG" width="558" height="298">
 
-epressions of fear, anger, and sadness.
+> **Figure 5.6.1** Total Classification Percentages
 
-Angry
+The total difference row at the bottom sums the differences between the actual and model predicted percentages for each model. Perhaps surprisingly, Model 3, which seemed to perform worse within each category (except for “Surprise”) had a total summed difference from the actual percentages for each classification almost 3% smaller than the other two models. This could indicate a few things. Firstly, it is an indication that the attempt to normalize the dataset led to real results – overall, Model 3 predicts globally in much closer percentages to the global percentages for each expression in the dataset. However, Model 3 predicts less accurately within each expression class, as can be seen in its confusion matrix in figure 5.4.3. Additionally, Model 3 overpredicts “Sad” when compared to the actual percentage of “Sad” images in the dataset. This leads us to the conclusion that although the model was less biased by imbalanced input percentages (as it was trained on 4000 images each of all categories except “Disgust”), it was also unable to learn useful classifiers for each expression, and instead tends to spread its classifications out uniformly across “Angry”, “Fear”, “Neutral”, “Sad”, and “Surprise”. It performs similarly to the other Models in the “Happy” classification, but that is, as mentioned before, likely due to the ease of recognizing a toothy smile, which is a very definitive feature. Overall, it is difficult to tell which model truly performs better. Because all these results come from within the FER-2013 dataset, true testing of these models must be performed in real-time, by real people, over a large period, in order to determine which model really performs best. This is where the implementation software comes in.
 
-Disgust
-
-Fear
-
-Happy
-
-Neutral
-
-Sad
-
-28.92
-
-44.8
-
-3.7
-
-36.33
-
-0
-
-17.64
-
-5.82
-
-5.82
-
-31.75
-
-2.65
-
-38.62
-
-0
-
-23.28
-
-7.58
-
-5.47
-
-21.87
-
-3.17
-
-4.41
-
-4.59
-
-12.35
-
-1.23
-
-Surprise
-
-**Figure 5.6.4** Classwise Disgust Classifications
-
-
-
-
-
-17
-
-Additional classwise confusion vectors for each of the 7 expressions in the FER-2013 datset are
-
-available in Appendix II.
-
-Finally, additional tests on the Solvay Conference image appear in Appendix I, as the images each
-
-require their own page.
-
-**5.7 Total Classification Percentages**
-
-Another way to look at the performance of the model is to determine the percentage of each class
-
-of image in the dataset as a whole, and then compare the total percentage of images fitting each
-
-classification as predicted by the model. A model that predicts a a classification percentage that
-
-matches the class’ percentage of the dataset as labeled does not mean that that model performs
-
-better than another model. For example, our dataset may have 25% “Fear” images, and a model
-
-may predict 25% of the dataset as falling under the label “Fear” – but if that model only predicts
-
-10% of images labeled “Fear” as belonging to the “Fear” class, and 90% of “Neutral” labeled
-
-images as belonging to the “Fear” class, then the model is obviously flawed. So, in order to
-
-determine the performance of a model, a total percentage classification matrix needs to be
-
-compared with each model’s confusion matrices, in order to determine whether a model actually
-
-predicts well within its class, as well as as a whole. A matrix for total classification percentages is
-
-is below, in Figure 5.7.1.
-
-**Total Classification Percentages (35864 total Images)**
-
-Actual
-
-13.41
-
-Model 1 Model 2 Model 3
-
-Angry
-
-Disgust
-
-Fear
-
-Happy
-
-Neutral
-
-11.85
-
-0.84
-
-13.39
-
-0
-
-15.43
-
-0
-
-1.58
-
-14.19
-
-25.93
-
-16.49
-
-17.22
-
-11.2
-
-9.4
-
-9.84
-
-12.95
-
-23.68
-
-17.45
-
-18.36
-
-12.15
-
-10.14
-
-26.81
-
-20.69
-
-19.62
-
-10.8
-
-25.88
-
-15.93
-
-23.61
-
-11.36
-
-13.11
-
-Sad
-
-Surprise
-
-Total Difference
-
-N/A
-
-14.97
-
-**Figure 5.7.1** Total Classification Percentages
-
-The total difference row at the bottom sums the differences between the actual and model predicted percentages for each model. Perhaps surprisingly, Model 3, which seemed to perform worse within each category (except for “Surprise”) had a total summed difference from the actual percentages for each classification almost 3% smaller than the other two models. This could indicate a few things. Firstly, it is an indication that the attempt to normalize the dataset led to real results – overall, Model 3 predicts globally in much closer percentages to the global percentages for each expression in the dataset. However, Model 3 predicts less accurately within each expression class, as can be seen in its confusion matrix in figure 5.5.3. Additionally, Model 3 overpredicts “Sad” when compared to the actual percentage of “Sad” images in the dataset. This leads us to the conclusion that although the model was less biased by imbalanced input percentages (as it was trained on 4000 images each of all categories except “Disgust”), it was also unable to learn useful classifiers for each expression, and instead tends to spread its classifications out uniformly across “Angry”, “Fear”, “Neutral”, “Sad”, and “Surprise”. It performs similarly to the other Models in the “Happy” classification, but that is, as mentioned before, likely due to the ease of recognizing a toothy smile, which is a very definitive feature. Overall, it is difficult to tell which model truly performs better. Because all these results come from within the FER-2013 dataset, true testing of these models must be performed in real-time, by real people, over a large period, in order to determine which model really performs best. This is where the implementation software comes in.
-
-**5.8 Implementation Software**
+##### 5.7 Implementation Software
 
 Software was created that allowed for ease of testing models on live and prerecorded videos, as well as on images. Users select from the three expression models to use when performing recognition. For each frame of an input video, whether live or prerecorded, and input photos, an OpenCV [6] implementation of Haar cascade facial recognition detects faces in the frame, and each detected region is passed to both the gender model and the chosen expression model, which perform prediction and write those predictions, along with their confidence levels, back onto the frame, along with a rectangle around the detected face. The user may choose to save videos and images with predictions written onto the frame.
 
 Additionally, the software tracks statistics for images, compiling how many men and women were detected, as well as the total number of people with each type of facial expression and more specific stats, including confidences, for each face detected. The user may choose to save these stats as a text file.
 
 
-**Discussion**
+##### 6. DISCUSSION
 
 Our objectives in creating these models were to meet certain self-set standards for validation accuracy within each database. Our stated goal of achieving a 95% validation accuracy within the IMDB dataset for Gender Recognition was met, albeit barely. One concern is that the gender model only attests to the existence of two genders: “Man” and “Woman”.  Therefore, the model is unable to predict non-binary or other-gendered individuals – in order to rectify this oversight, a dataset with more gender label types should be created or found. We were unable to meet our stated goal of 65% validation accuracy in the FER-2013 dataset for expression recognition. Initially, this number was chosen as it roughly mirrored the numbers achieved in [2] (66%) and [3] (73.4%), with room to account for the extra features those networks utilized. However, expression recognition is an inherently subjective field: two people may interpret the same facial expression very differently, as can be seen by the perceived inconsistencies in the FER-2013 emotion dataset. This was the reason we created three different Expression Recognition Models. Although a model may report lower accuracy scores within the FER-2013 dataset, it is always possible that the model will perform better in real applications. 
 
 The ultimate stated goal of creating gender and expression recognition software was met, as the models are implemented smoothly within a basic terminal UI that allows for live video recording, photo taking, as well as processing of already recorded videos and already taken photos. There is additionally likely a bias in the gender recognition model towards western facial features, as the IMDB database is predominated by western, and more specifically white American actors. This could be tested by attaining datasets with more ethnic and racial diversity and comparing confusion matrices.
 
 
-**Conclusion and Future Work**
+##### 7. CONCLUSION AND FUTURE WORK
 
-This paper describes the creation and implementation of four CNN models using two different CNN architectures. The architectures were custom built over many iterations in an attempt to create ideal networks to perform gender and expression recognition tasks. Once two architectures were decided upon, they were trained on the IMDB dataset (gender network) and the FER-2013 dataset (expression network).The gender recognition model achieved 95% validation accuracy in the IMDB dataset.
+This project describes the creation and implementation of four CNN models using two different CNN architectures. The architectures were custom built over many iterations in an attempt to create ideal networks to perform gender and expression recognition tasks. Once two architectures were decided upon, they were trained on the IMDB dataset (gender network) and the FER-2013 dataset (expression network).The gender recognition model achieved 95% validation accuracy in the IMDB dataset.
 
 The three expression recognition models achieved corresponded to 3 different versions of the FER-2013 dataset. The FER-2013 dataset has varying numbers of images in each classification category, but the “Disgust” category in particular is an order of magnitude smaller than other categories. Therefore, we created 3 models. The first model corresponded to the expression recognition architecture being trained on the whole FER-2013 dataset. The second model corresponded to the model being trained on the whole FER-2013 dataset with all images labeled “Disgust” removed. The final model was trained on the FER-2013 dataset with all images labeled “Disgust” removed and the remaining labels normalized to 4000 images each. Validation accuracies of 60.10%, 61.30%, and 57.2% for each model respectively were achieved. Each of these models were implemented into software that allows for user input to select live video recognition, recognition on pre-recorded videos, and recognition on photos. The user may select between any of the three expression recognition models. The program compiles statistics about predictions for videos and photos and displays them to the user upon request, and allows the user to save these statistics to a text file.
 
