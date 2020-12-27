@@ -6,18 +6,16 @@ import tensorflow as tf
 tf.logging.set_verbosity(tf.logging.ERROR)
 
 # path for haar cascade file
-HAAR_CASCADE_DIR = "D:/ISU/HCI_575/Project/Implementation/haarcascade_frontalface_default.xml"
+HAAR_CASCADE_DIR = "<path to the haar cascade frontal face file>"
 
 # path for emotion model's weights
-EMOTION_MODEL_DIR = "D:/ISU/HCI_575/Project/Implementation/HCI575ProjectMain(1)/Project_files/emotion_train_final/\
-Unchanged_dataset/Weights/weights-33-1.103463-0.601.hdf5"
+EMOTION_MODEL_DIR = "<path to emotion model weights>"
 
 # path for gender model's weights
-GENDER_MODEL_DIR = "D:/ISU/HCI_575/Project/Implementation/HCI575ProjectMain(1)/Project_files/gender_train_final/\
-saved_weights_gender/weights-17-0.134326-0.950.hdf5"
+GENDER_MODEL_DIR = "<path to gender model weights>"
 
 # path to the directory where output has to be saved
-IO_DIR = "D:/ISU/HCI_575/Project/Implementation/HCI575ProjectMain(1)/Project_files/prediction+results"
+IO_DIR = "<path to IO Directory>"
 
 EMOTIONS = ["ANGRY", "DISGUSTED", "FEARFUL", "HAPPY", "NEUTRAL", "SAD", "SURPRISED"]
 EMOTION_COLORS = [(0, 0, 255), (0, 255, 0), (0, 255, 255), (255, 0, 0), (255, 255, 0), (255, 0, 255), (0, 165, 255)]
