@@ -9,11 +9,13 @@
 
 ### I. INSTRUCTIONS FOR EXECUTING THE CODE FILES
 
-i) **TRAINING:**
+- **TRAINING:**
    Run **train_gender.py** and **train_emotion.py** to train each model. Set the datasets' path and SAVE_DIR in each file and execute the code. The scripts save the weights in the SAVE_DIR as soon as minimum validation loss is observed. **Use the latest saved weights.**
-ii) **PREDICTION:**
+   
+- **PREDICTION:**
    For live video prediction, **predict.py** can be used. The paths for saved gender and emotion models' weights need to be set before executing the code. This script will run predictions in real time using the mentioned cam source (0 or 1 - default or external). For deeper analysis, **predictWithInputAndStats.py** can be executed, which also has the functionality of counting the number of faces and calculating the % of emotions detected, but has a drawback that currently it does not support analysis when multiple faces are detected **in a video**, but works for images. The program is menu-driven in **predictWithInputAndStats.py**, so the on-screen instructions are user-friendly and easy to follow.
-iii) **ACCESSING PRE-TRAINED WEIGHTS AND DATASET:**
+   
+- **ACCESSING PRE-TRAINED WEIGHTS AND DATASET:**
    The datasets are publicly available, but had many mislabeled samples. If you need access to the cleaned version of the datasets, or the pre-trained weights, you can request access by sending an email to **mkohli1997@gmail.com**.
    
 
