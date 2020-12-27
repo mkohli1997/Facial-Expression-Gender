@@ -4,28 +4,33 @@ from keras.models import Sequential
 from keras.optimizers import *
 from keras.utils import to_categorical
 from keras.layers.normalization import BatchNormalization
+from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
 import cv2
 import os
 import numpy as np
-from sklearn.utils import shuffle
-from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
 
 EMOTIONS = ["ANGRY", "DISGUST", "FEAR", "HAPPY", "NEUTRAL", "SAD", "SURPRISE"]
 EMOTION_MAP = {emotion: idx for idx, emotion in enumerate(EMOTIONS)}
-EMOTION_DATA_DIR = "D:/ISU/HCI_575/Project/Implementation/HCI575ProjectMain(1)/Project_files/emotion_train_final/\
-emotion_data"
-SAVE_DIR = "test_weights"
+EMOTION_DATA_DIR = "<path to the dataset>"
+SAVE_DIR = "<path to the directory where weights have to be saved>"
 
 LEARNING_RATE = 1e-4
 DECAY = 1e-6
 POOL_SIZE = (2, 2)
+# size of the batch to be trained at a time
+BATCH_SIZE = 256
+# number of epochs
+EPOCHS = 100
+# fraction of dataset to use for validation during training
+TEST_SIZE = 0.25
 
 
 def load_data(X, y, emotion):
     """
-    This function loads the data directly into memory, since it fits in the memory. For a larger subset of IMDB
+    This function loads the data directly into memory, since it fits in the memory. For a larger
     dataset, Keras' ImageDataGenerator can be used to load images in smaller batches.
     :param X: (list) stores all images
     :param y: (list) stores all labels
@@ -119,7 +124,7 @@ if __name__ == "__main__":
     # shuffle the image-label pairs
     X, y = shuffle(X, y)
     # train-test split of 75%-25%
-    x_train, x_val, y_train, y_val = train_test_split(X, y, test_size=0.25)
+    x_train, x_val, y_train, y_val = train_test_split(X, y, test_size=TEST_SIZE)
 
     print("TRAINING_DATA SHAPE: ", x_train.shape)
     print("VALIDATION_DATA SHAPE: ", x_val.shape)
@@ -133,7 +138,7 @@ if __name__ == "__main__":
     checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 
     # fit the model
-    history = cnn.fit(x_train, y_train, epochs=100, validation_data=(x_val, y_val), batch_size=256, verbose=2,
+    history = cnn.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_val, y_val), batch_size=BATCH_SIZE, verbose=2,
                       callbacks=[checkpoint])
 
     # plot the results
