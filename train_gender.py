@@ -1,23 +1,26 @@
-from keras.layers import Dense,Flatten,Conv2D,Dropout,MaxPooling2D
+from keras.layers import Dense, Flatten, Conv2D, Dropout, MaxPooling2D
 from keras.callbacks import ModelCheckpoint
 from keras.models import Sequential
 from keras.optimizers import *
-from keras.utils import to_categorical,plot_model
+from keras.utils import to_categorical
+from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
 import cv2
 import os
 import numpy as np
-from sklearn.utils import shuffle
-from sklearn.model_selection import train_test_split
+
 import matplotlib.pyplot as plt
 
 
-GENDER_DATA_DIR = "D:/ISU/HCI_575/Project/Implementation/HCI575ProjectMain(1)/Project_files/gender_train_final/\
-gender_data"
-SAVE_DIR = "test_weights"
+GENDER_DATA_DIR = "<path to the dataset>"
+SAVE_DIR = "<path where model weights have to be saved>"
 
 POOL_SIZE = (2, 2)
 LEARNING_RATE = 1e-3
 DECAY = 1e-5
+BATCH_SIZE = 128
+EPOCHS = 30
+TEST_SIZE = 0.20
 
 
 def load_data(X, y):
@@ -120,7 +123,7 @@ if __name__ == "__main__":
     # shuffle image-label pairs
     X, y = shuffle(X, y)
     # train-test split 80%-20%
-    x_train, x_val, y_train, y_val = train_test_split(X, y, test_size=0.2)
+    x_train, x_val, y_train, y_val = train_test_split(X, y, test_size=TEST_SIZE)
 
     print("TRAINING_DATA SHAPE: ", x_train.shape)
     print("VALIDATION_DATA SHAPE: ", x_val.shape)
@@ -134,7 +137,7 @@ if __name__ == "__main__":
     checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 
     # fit the model
-    history = cnn.fit(x_train, y_train, epochs=30, validation_data=(x_val, y_val), batch_size=128, verbose=2,
+    history = cnn.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_val, y_val), batch_size=BATCH_SIZE, verbose=2,
                       callbacks=[checkpoint])
 
     # plot the results
