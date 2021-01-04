@@ -118,7 +118,7 @@ There is a single difference the architectures of used for the three models: the
 
 ##### 4.3 Expression Recognition Model without “Disgust” Label (Model 2)
 
-Because the “Disgust” label was severely underpopulated, we decided to train the architecture in 4.2 on the FER-2013 dataset without the “Disgust” label, which, as will be seen later, was not particularly successfully learned by expression Model 1. As before, this model was trained over 100 epochs and weights were saved when minimum validation loss was recognized.
+Because the “Disgust” label was severely underpopulated, we decided to train the architecture in Figure 4.2 on the FER-2013 dataset without the “Disgust” label, which, as will be seen later, was not particularly successfully learned by expression Model 1. As before, this model was trained over 100 epochs and weights were saved when minimum validation loss was recognized.
 
 ##### 4.4 Expression Recognition Model without “Disgust” Label & with Normalized Datasets (Model 3)
 
